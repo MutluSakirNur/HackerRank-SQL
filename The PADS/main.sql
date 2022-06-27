@@ -1,0 +1,20 @@
+SELECT NAME + '(' +
+CASE 
+WHEN OCCUPATION = 'Doctor' THEN 'D'
+WHEN OCCUPATION = 'Actor' THEN 'A'
+WHEN OCCUPATION = 'Professor' THEN 'P'
+WHEN OCCUPATION = 'Singer' THEN 'S'
+END + ')'
+FROM OCCUPATIONS
+ORDER BY NAME
+SELECT 
+CASE 
+WHEN OCCUPATION='Actor' THEN CONCAT('There are a total of ', SAYI , ' actors.')
+WHEN OCCUPATION='Doctor' THEN CONCAT('There are a total of ', SAYI , ' doctors.')
+WHEN OCCUPATION='Professor' THEN CONCAT('There are a total of ', SAYI , ' professors.')
+WHEN OCCUPATION='Singer' THEN CONCAT('There are a total of ', SAYI , ' singers.')
+END
+FROM
+(SELECT COUNT(*) AS SAYI,OCCUPATION FROM OCCUPATIONS
+GROUP BY OCCUPATION) AS OCCU
+ORDER BY SAYI,OCCUPATION
